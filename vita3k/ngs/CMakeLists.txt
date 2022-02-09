@@ -16,6 +16,7 @@ add_library(
 	include/ngs/scheduler.h
 	include/ngs/state.h
 	include/ngs/system.h
+	include/ngs/dsp/playback_rate.h
 
 	src/definitions/atrac9.cpp
 	src/definitions/master.cpp
@@ -30,8 +31,9 @@ add_library(
 	src/modules/passthrough.cpp
 	src/ngs.cpp
 	src/route.cpp
-	src/scheduler.cpp)
+	src/scheduler.cpp
+	src/dsp/playback_rate.cpp)
 
 target_include_directories(ngs PUBLIC include)
 target_link_libraries(ngs PUBLIC codec)
-target_link_libraries(ngs PRIVATE util mem kernel cpu)
+target_link_libraries(ngs PRIVATE util mem kernel cpu SoundTouch)
