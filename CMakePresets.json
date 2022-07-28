@@ -86,7 +86,15 @@
       "description": "Linux native build using Ninja Multi-Config generator and Clang compiler",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
-        "CMAKE_CXX_COMPILER": "clang++"
+        "CMAKE_CXX_COMPILER": "clang++",
+
+        "CMAKE_CXX_FLAGS": "-stdlib=libc++",
+
+        "BOOST_CXX_FLAGS": "-stdlib=libc++",
+        "BOOST_LINKER": "-fuse-ld=lld"
+      },
+      "environment": {
+        "LDFLAGS": "-fuse-ld=lld"
       }
     },
     {

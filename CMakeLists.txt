@@ -65,19 +65,19 @@ endmacro(b2_build)
 macro(boost_compile)
 	if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 		execute_process(
-			COMMAND ${b2} -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} address-model=64 --architecture=x64 toolset=${BOOST_TOOLSET} cxxflags=${BOOST_CXX_FLAGS} stage
+			COMMAND ${b2} -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} address-model=64 --architecture=x64 toolset=${BOOST_TOOLSET} cxxflags=${BOOST_CXX_FLAGS} cxxflags=${BOOST_LINKER} stage
 			WORKING_DIRECTORY ${BOOST_SOURCEDIR}
             OUTPUT_QUIET
 		)
 	elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
 		execute_process(
-			COMMAND ${b2} -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} cxxflags=${BOOST_CXX_FLAGS} stage
+			COMMAND ${b2} -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} cxxflags=${BOOST_CXX_FLAGS} cxxflags=${BOOST_LINKER} stage
 			WORKING_DIRECTORY ${BOOST_SOURCEDIR}
             OUTPUT_QUIET
 		)
 	elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 		execute_process(
-			COMMAND ${b2} --ignore-site-config -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} toolset=${BOOST_TOOLSET} cxxflags=${BOOST_CXX_FLAGS} stage
+			COMMAND ${b2} --ignore-site-config -j${CPU_COUNT} --build-dir=${BOOST_INSTALLDIR} --stagedir=${BOOST_INSTALLDIR} toolset=${BOOST_TOOLSET} cxxflags=${BOOST_CXX_FLAGS} cxxflags=${BOOST_LINKER} stage
 			WORKING_DIRECTORY ${BOOST_SOURCEDIR}
             OUTPUT_QUIET
 		)
